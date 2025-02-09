@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "http://localhost:5175", // Your React app's URL
+    origin: "http://localhost:5173", // Your React app's URL
     credentials: true, // Allow sending cookies
   })
 );
