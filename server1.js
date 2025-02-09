@@ -6,7 +6,13 @@ app.use(express.json())
 //cors
 const cors = require("cors");
 
-app.use(cors())
+app.use(
+  cors({
+    origin: "https://swissmote-events-data.netlify.app", // Your React app's URL
+    credentials: true, // Allow sending cookies
+  })
+);
+
 
 //importing the Router
 const useRouter = require('./user')
