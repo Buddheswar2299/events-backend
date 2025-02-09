@@ -35,12 +35,6 @@ app.get('/',(req,res)=>{
     res.status(200).json({message:"Hello World"})
 })
 
-app.get('/signin',(req,res)=>{
-    res.render('signin')
-})
-app.get('/signup',(req,res)=>{
-    res.render('signup')
-})
 
 
 app.post('/signup', async (req, res) => {
