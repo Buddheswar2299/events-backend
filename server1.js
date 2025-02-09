@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Your React app's URL
+    origin: "https://swissmote-events-data.netlify.app/", 
     credentials: true, // Allow sending cookies
   })
 );
