@@ -147,7 +147,7 @@ app.get('/protected',(req,res)=>{
 app.post("/logout", (req, res) => {
     res.clearCookie("token", {
         httpOnly: true,
-        secure: false, // Change to true if using HTTPS
+        secure: true, // Change to true if using HTTPS
         sameSite: "Lax"
     });
 
