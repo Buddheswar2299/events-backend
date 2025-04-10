@@ -106,7 +106,7 @@ app.post("/signin", async (req, res) => {
         // 4️⃣ Set token in cookies securely
         res.cookie("token", token, {
             httpOnly: true,  // Prevents access by JavaScript
-            secure:false,
+            secure:true,
             sameSite: "Lax",  // Allow cross-origin cookies
             maxAge: 2 * 60 * 60 * 1000  // 2 hours
         });
