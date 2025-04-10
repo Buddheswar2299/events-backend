@@ -25,7 +25,7 @@ app.use(
 // );
 
 app.options('*', cors({
-  origin: "https://swissmote-events-data.netlify.app/",
+  origin: "https://swissmote-events-data.netlify.app",
   credentials: true
 }));
 
@@ -169,7 +169,7 @@ app.post("/logout", (req, res) => {
     sameSite: "None"
   });
 
-  res.setHeader("Access-Control-Allow-Origin", "https://swissmote-events-data.netlify.app/");
+  res.setHeader("Access-Control-Allow-Origin", "https://swissmote-events-data.netlify.app");
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   return res.status(200).json({ message: "Logged out successfully" });
