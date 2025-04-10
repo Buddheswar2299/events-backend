@@ -8,8 +8,14 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://swissmote-events-data.netlify.app", // Your React app's URL
-    credentials: true, // Allow sending cookies
+    origin: (origin, callback) => {
+      if (!origin) {
+        // Allow requests with no origin (like mobile apps, Postman)
+        return callback(null, true);
+      }
+      return callback(null, true); // Allow all origins
+    },
+    credentials: true, // Allow cookies, authorization headers
   })
 );
 
@@ -24,10 +30,7 @@ app.use(
 //   })
 // );
 
-app.options('*', cors({
-  origin: "https://swissmote-events-data.netlify.app",
-  credentials: true
-}));
+
 
 
 //importing the Router
@@ -160,20 +163,13 @@ app.get('/protected',(req,res)=>{
 // });
 
 app.post("/logout", (req, res) => {
-  console.log("Logout route hit");
-  console.log("Origin:", req.headers.origin);
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: false, // Change to true if using HTTPS
+        sameSite: "Lax"
+    });
 
-  res.clearCookie("token", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "None",
-    credentials: true,
-  });
-
-  res.setHeader("Access-Control-Allow-Origin", "https://swissmote-events-data.netlify.app");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-
-  return res.status(200).json({ message: "Logged out successfully" });
+    return res.status(200).json({ message: "Logged out successfully" });
 });
 
 
