@@ -6,23 +6,23 @@ app.use(express.json())
 //cors
 const cors = require("cors");
 
-// app.use(
-//   cors({
-//     origin: "https://swissmote-events-data.netlify.app", // Your React app's URL
-//     credentials: true, // Allow sending cookies
-//   })
-// );
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
-      return callback(null, true); // Accept all origins dynamically
-    },
-    credentials: true,
+    origin: "https://swissmote-events-data.netlify.app", // Your React app's URL
+    credentials: true, // Allow sending cookies
   })
 );
+
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       // Allow requests with no origin (like mobile apps or curl requests)
+//       if (!origin) return callback(null, true);
+//       return callback(null, true); // Accept all origins dynamically
+//     },
+//     credentials: true,
+//   })
+// );
 
 
 //importing the Router
