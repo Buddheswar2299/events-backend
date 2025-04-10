@@ -24,6 +24,11 @@ app.use(
 //   })
 // );
 
+app.options('*', cors({
+  origin: "https://swissmote-events-data.netlify.app",
+  credentials: true
+}));
+
 
 //importing the Router
 const useRouter = require('./user')
