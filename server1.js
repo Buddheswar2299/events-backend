@@ -166,7 +166,8 @@ app.post("/logout", (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
     secure: true,
-    sameSite: "None"
+    sameSite: "None",
+    credentials: true,
   });
 
   res.setHeader("Access-Control-Allow-Origin", "https://swissmote-events-data.netlify.app");
