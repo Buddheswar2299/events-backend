@@ -19,17 +19,6 @@ app.use(
   })
 );
 
-// app.use(
-//   cors({
-//     origin: function (origin, callback) {
-//       // Allow requests with no origin (like mobile apps or curl requests)
-//       if (!origin) return callback(null, true);
-//       return callback(null, true); // Accept all origins dynamically
-//     },
-//     credentials: true,
-//   })
-// );
-
 
 
 
@@ -152,15 +141,7 @@ app.get('/protected',(req,res)=>{
 })
 
 
-// app.post("/logout", (req, res) => {
-//     res.clearCookie("token", {
-//         httpOnly: true,
-//         secure: true, // Change to true if using HTTPS
-//         sameSite: "None"
-//     });
 
-//     return res.status(200).json({ message: "Logged out successfully" });
-// });
 
 app.post("/logout", (req, res) => {
     res.clearCookie("token", {
