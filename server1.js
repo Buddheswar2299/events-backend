@@ -8,7 +8,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://swissmote-events-data.netlify.app", // Your React app's URL
+    origin: "https://swissmote-events-data.netlify.app/", // Your React app's URL
     credentials: true, // Allow sending cookies
   })
 );
@@ -25,7 +25,7 @@ app.use(
 // );
 
 app.options('*', cors({
-  origin: "https://swissmote-events-data.netlify.app",
+  origin: "https://swissmote-events-data.netlify.app/",
   credentials: true
 }));
 
@@ -149,15 +149,32 @@ app.get('/protected',(req,res)=>{
 })
 
 
-app.post("/logout", (req, res) => {
-    res.clearCookie("token", {
-        httpOnly: true,
-        secure: true, // Change to true if using HTTPS
-        sameSite: "None"
-    });
+// app.post("/logout", (req, res) => {
+//     res.clearCookie("token", {
+//         httpOnly: true,
+//         secure: true, // Change to true if using HTTPS
+//         sameSite: "None"
+//     });
 
-    return res.status(200).json({ message: "Logged out successfully" });
+//     return res.status(200).json({ message: "Logged out successfully" });
+// });
+
+app.post("/logout", (req, res) => {
+  console.log("Logout route hit");
+  console.log("Origin:", req.headers.origin);
+
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None"
+  });
+
+  res.setHeader("Access-Control-Allow-Origin", "https://swissmote-events-data.netlify.app/");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+
+  return res.status(200).json({ message: "Logged out successfully" });
 });
+
 
   
 
