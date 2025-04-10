@@ -107,7 +107,7 @@ app.post("/signin", async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,  // Prevents access by JavaScript
             secure:true,
-            sameSite: "Lax",  // Allow cross-origin cookies
+            sameSite: "None",  // Allow cross-origin cookies
             maxAge: 2 * 60 * 60 * 1000  // 2 hours
         });
 
@@ -148,7 +148,7 @@ app.post("/logout", (req, res) => {
     res.clearCookie("token", {
         httpOnly: true,
         secure: true, // Change to true if using HTTPS
-        sameSite: "Lax"
+        sameSite: "None"
     });
 
     return res.status(200).json({ message: "Logged out successfully" });
